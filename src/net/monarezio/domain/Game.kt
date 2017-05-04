@@ -7,16 +7,41 @@ import net.monarezio.domain.models.GameBoard
 /**
  * Created by monarezio on 04/05/2017.
  */
-class Game private constructor(private val board: Board, private val playerOnMove: Field): TicTacToe {
+class Game private constructor(private val board: Board, private val playerOnMove: Field, private val winNumber: Int): TicTacToe {
 
     override fun makeMove(x: Int, y: Int): TicTacToe {
         if(isMoveAvailable(x, y) && !isGameOver())
-            return createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle())
+            return createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber)
         return this
     }
 
-    override fun getWinner(): Field { //TODO get the winner
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getWinner(): Field { //TODO diagonals
+
+        val fields = board.getFields()
+
+        for(i in 0..board.getRows() - winNumber) {
+            for(j in 0..board.getColumns() - winNumber) {
+                val rows = i.rangeTo(i + winNumber - 1).map { index -> fields[index][j] }
+                if(rows.all { item -> item == Field.CROSS })
+                    return Field.CROSS
+                else if(rows.all { item -> item == Field.CIRCLE })
+                    return Field.CIRCLE
+
+                val columns = j.rangeTo(j + winNumber - 1).map { index -> fields[i][index] }
+                if(columns.all { item -> item == Field.CROSS })
+                    return Field.CROSS
+                else if(columns.all { item -> item == Field.CIRCLE })
+                    return Field.CIRCLE
+
+                val diagonalRight = j.rangeTo(j + winNumber - 1).map { index -> fields[index][index] }
+                if(diagonalRight.all { item -> item == Field.CROSS })
+                    return Field.CROSS
+                else if(diagonalRight.all { item -> item == Field.CIRCLE })
+                    return Field.CIRCLE
+            }
+        }
+
+        return Field.ANON
     }
 
     override fun isGameOver(): Boolean = false //TODO: according to isGameOver
@@ -32,11 +57,11 @@ class Game private constructor(private val board: Board, private val playerOnMov
         /**
          * creates a new game with an empty gameboard
          */
-        fun createNewGame(rows: Int , columns: Int): TicTacToe =  Game(GameBoard.createNewBoard(rows, columns), Field.CROSS)
+        fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5): TicTacToe =  Game(GameBoard.createNewBoard(rows, columns), Field.CROSS, winNumber)
 
         /**
          * create a game with the presets
          */
-        fun createGame(board: Board, playerOnMove: Field) = Game(board, playerOnMove)
+        fun createGame(board: Board, playerOnMove: Field, winNumber: Int) = Game(board, playerOnMove, winNumber)
     }
 }

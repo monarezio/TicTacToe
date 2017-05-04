@@ -5,7 +5,7 @@ import net.monarezio.domain.common.extensions.set
 /**
  * Created by monarezio on 04/05/2017.
  */
-class GameBoard private constructor(private val fields: List<List<Field>>): Board {
+data class GameBoard private constructor(private val fields: List<List<Field>>): Board {
 
     override fun getFields(): List<List<Field>> = fields
 
