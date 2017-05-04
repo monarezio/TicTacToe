@@ -11,12 +11,17 @@ interface TicTacToe {
     /**
      * returns a new game state with the modified values
      */
-    fun onMoveMade(x: Int, y: Int): TicTacToe
+    fun makeMove(x: Int, y: Int): TicTacToe
 
     /**
      * returns the winner of the game, if there is no winner Field.ANON is returned
      */
-    fun isGameOver(): Field
+    fun getWinner(): Field
+
+    /**
+     * returns true if the game is over, false if it is not
+     */
+    fun isGameOver(): Boolean
 
     /**
      * returns if the move on the current position is available
