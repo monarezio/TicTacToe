@@ -34,6 +34,9 @@ class Game private constructor(private val board: Board, private val playerOnMov
          */
         fun createNewGame(rows: Int , columns: Int): TicTacToe =  Game(GameBoard.createNewBoard(rows, columns), Field.CROSS)
 
+        /**
+         * create a game with the presets
+         */
         fun createGame(board: Board, playerOnMove: Field) = Game(board, playerOnMove)
     }
 }
