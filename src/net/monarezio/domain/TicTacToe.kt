@@ -5,6 +5,5 @@ package net.monarezio.domain
  */
 interface TicTacToe {
 
-    fun
-
+    fun 
 }
