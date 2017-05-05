@@ -1,5 +1,7 @@
 package net.monarezio.domain
 
+import net.monarezio.domain.common.extensions.diagonalLeft
+import net.monarezio.domain.common.extensions.diagonalRight
 import net.monarezio.domain.models.Board
 import net.monarezio.domain.models.Field
 import net.monarezio.domain.models.GameBoard
@@ -33,10 +35,16 @@ class Game private constructor(private val board: Board, private val playerOnMov
                 else if(columns.all { item -> item == Field.CIRCLE })
                     return Field.CIRCLE
 
-                val diagonalRight = j.rangeTo(j + winNumber - 1).map { index -> fields[index][index] }
+                val diagonalRight = fields.diagonalRight(i, j, winNumber)
                 if(diagonalRight.all { item -> item == Field.CROSS })
                     return Field.CROSS
                 else if(diagonalRight.all { item -> item == Field.CIRCLE })
+                    return Field.CIRCLE
+
+                val diagonalLeft = fields.diagonalLeft(i, j + winNumber - 1, winNumber)
+                if(diagonalLeft.all { item -> item == Field.CROSS })
+                    return Field.CROSS
+                else if(diagonalLeft.all { item -> item == Field.CIRCLE })
                     return Field.CIRCLE
             }
         }

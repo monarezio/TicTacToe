@@ -27,9 +27,21 @@ internal class GameTest {
     )), Field.CIRCLE, 3)
     val finishedGame3 = Game.createGame(GameBoard.createBoard(listOf(
             listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.CROSS, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.ANON),
             listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.ANON),
             listOf(Field.CROSS, Field.ANON, Field.ANON, Field.CROSS)
+    )), Field.CIRCLE, 3)
+    val finishedGame4 = Game.createGame(GameBoard.createBoard(listOf(
+            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CIRCLE, Field.ANON),
+            listOf(Field.CROSS, Field.ANON, Field.ANON, Field.CROSS)
+    )), Field.CIRCLE, 3)
+    val finishedGame5 = Game.createGame(GameBoard.createBoard(listOf(
+            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CIRCLE, Field.ANON),
+            listOf(Field.CIRCLE, Field.ANON, Field.ANON, Field.CROSS)
     )), Field.CIRCLE, 3)
 
     @Test
@@ -54,6 +66,8 @@ internal class GameTest {
         assertEquals(Field.CIRCLE, finishedGame.getWinner())
         assertEquals(Field.CROSS, finishedGame2.getWinner())
         assertEquals(Field.CROSS, finishedGame3.getWinner())
+        assertEquals(Field.CROSS, finishedGame4.getWinner())
+        assertEquals(Field.ANON, finishedGame5.getWinner())
     }
 
 }
