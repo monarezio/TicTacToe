@@ -17,8 +17,7 @@ class Game private constructor(private val board: Board, private val playerOnMov
         return this
     }
 
-    override fun getWinner(): Field { //TODO diagonals
-
+    override fun getWinner(): Field {
         val fields = board.getFields()
 
         for(i in 0..board.getRows() - winNumber) {
@@ -52,7 +51,7 @@ class Game private constructor(private val board: Board, private val playerOnMov
         return Field.ANON
     }
 
-    override fun isGameOver(): Boolean = false //TODO: according to isGameOver
+    override fun isGameOver(): Boolean = getWinner() != Field.ANON
 
     override fun isMoveAvailable(x: Int, y: Int): Boolean = board.getField(x, y) == Field.ANON
 
