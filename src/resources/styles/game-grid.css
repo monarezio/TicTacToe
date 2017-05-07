@@ -1,0 +1,20 @@
+* {
+    -fx-font-family: "Super Webcomic Bros.";
+}
+
+Label {
+    -fx-border-width: 0.5px;
+    -fx-border-color: #e4e4e4;
+}
+
+Label:hover {
+    -fx-background-color: #ebebeb;
+}
+
+.x {
+    -fx-text-fill: #2980b9;
+}
+
+.o {
+    -fx-text-fill: #c0392b;
+}

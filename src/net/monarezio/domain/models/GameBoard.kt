@@ -23,7 +23,7 @@ data class GameBoard private constructor(private val fields: List<List<Field>>):
          * creates a new empty board
          */
         fun createNewBoard(rows: Int, columns: Int): Board = GameBoard(
-                0.rangeTo(rows - 1).map { i -> i.rangeTo(columns - 1).map { j -> Field.ANON } }
+                0.rangeTo(rows - 1).map { i -> 0.rangeTo(columns - 1).map { j -> Field.ANON } }
         )
 
         /**
