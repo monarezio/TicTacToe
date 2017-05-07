@@ -11,10 +11,15 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="/resources/styles/styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GameGrid fx:id="gridPane" prefWidth="800.0"/>
-      <Button layoutX="25.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="27.0" prefWidth="107.0" text="Back">
+      <Button layoutX="15.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="27.0" prefWidth="200.0" text="Main Menu">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="red" />
+         </styleClass></Button>
+      <Button layoutX="670.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleReset" prefHeight="27.0" prefWidth="117.0" text="Reset">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="blue" />
          </styleClass></Button>
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package net.monarezio.domain
 
 import net.monarezio.domain.models.Board
+import net.monarezio.domain.models.Coordinate
 import net.monarezio.domain.models.Field
 
 /**
@@ -14,9 +15,9 @@ interface TicTacToe {
     fun makeMove(x: Int, y: Int): TicTacToe
 
     /**
-     * returns the winner of the game, if there is no winner Field.ANON is returned
+     * returns the winner of the game and the position of the end scene, if there is no winner Field.ANON is returned
      */
-    fun getWinner(): Field
+    fun getWinner(): Pair<Field, List<Coordinate>>
 
     /**
      * returns true if the game is over, false if it is not

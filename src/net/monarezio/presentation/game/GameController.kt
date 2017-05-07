@@ -19,4 +19,10 @@ class GameController : Controller() {
     }
 
     fun getBoard(): Board = game.getBoard()
+
+    fun getWinner() = game.getWinner()
+
+    fun resetBoard() {
+        game = Game.createNewGame(22, 35)
+    }
 }
