@@ -1,10 +1,7 @@
 package net.monarezio.presentation.game
 
-import net.monarezio.domain.Game
-import net.monarezio.domain.TicTacToe
-import net.monarezio.domain.models.Board
-import net.monarezio.domain.models.GameBoard
-import net.monarezio.presentation.custom.ClickListener
+import net.monarezio.domain.game.Game
+import net.monarezio.domain.game.models.Board
 import tornadofx.*
 
 /**

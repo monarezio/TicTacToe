@@ -6,9 +6,9 @@ import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.shape.Line
 import javafx.scene.text.Font
-import net.monarezio.domain.models.Board
-import net.monarezio.domain.models.Coordinate
-import net.monarezio.domain.models.Field
+import net.monarezio.domain.game.models.Board
+import net.monarezio.domain.game.models.Coordinate
+import net.monarezio.domain.game.models.Field
 import tornadofx.*
 
 /**

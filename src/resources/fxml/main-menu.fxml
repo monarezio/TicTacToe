@@ -18,7 +18,7 @@
             <String fx:value="red" />
             <String fx:value="big" />
          </styleClass></Button>
-      <Button layoutX="252.0" layoutY="350.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="300.0" text="Human vs Ai">
+      <Button layoutX="252.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleHumanVsAi" prefHeight="27.0" prefWidth="300.0" text="Human vs Ai">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="red" />

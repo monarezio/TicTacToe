@@ -1,8 +1,8 @@
-package net.monarezio.domain
+package net.monarezio.domain.game
 
-import net.monarezio.domain.models.Board
-import net.monarezio.domain.models.Coordinate
-import net.monarezio.domain.models.Field
+import net.monarezio.domain.game.models.Board
+import net.monarezio.domain.game.models.Coordinate
+import net.monarezio.domain.game.models.Field
 
 /**
  * Created by monarezio on 04/05/2017.

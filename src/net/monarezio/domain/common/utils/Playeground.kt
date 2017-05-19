@@ -1,8 +1,7 @@
 package net.monarezio.domain.common.utils
 
 import net.monarezio.domain.common.extensions.diagonalLeft
-import net.monarezio.domain.common.extensions.diagonalRight
-import net.monarezio.domain.models.Field
+import net.monarezio.domain.game.models.Field
 
 /**
  * Created by monarezio on 05/05/2017.

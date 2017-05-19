@@ -1,5 +1,7 @@
 package net.monarezio.domain.models
 
+import models.GameBoard
+import net.monarezio.domain.game.models.Field
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*

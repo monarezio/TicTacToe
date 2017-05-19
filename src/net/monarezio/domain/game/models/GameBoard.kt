@@ -1,6 +1,8 @@
-package net.monarezio.domain.models
+package models
 
 import net.monarezio.domain.common.extensions.set
+import net.monarezio.domain.game.models.Board
+import net.monarezio.domain.game.models.Field
 
 /**
  * Created by monarezio on 04/05/2017.
@@ -11,7 +13,7 @@ data class GameBoard private constructor(private val fields: List<List<Field>>):
 
     override fun getField(x: Int, y: Int): Field = fields[x][y]
 
-    override fun setField(x: Int, y: Int, field: Field): Board = createBoard(fields.set(x, fields[x].set(y, field)))
+    override fun setField(x: Int, y: Int, field: Field): Board = GameBoard.Companion.createBoard(fields.set(x, fields[x].set(y, field)))
 
     override fun getRows(): Int = fields.size
 

@@ -1,4 +1,4 @@
-package net.monarezio.domain.models
+package net.monarezio.domain.game.models
 
 /**
  * Created by monarezio on 04/05/2017.

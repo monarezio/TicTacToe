@@ -1,6 +1,6 @@
 package net.monarezio.domain.common.extensions
 
-import net.monarezio.domain.models.Coordinate
+import net.monarezio.domain.game.models.Coordinate
 
 /**
  * Created by monarezio on 04/05/2017.

@@ -1,9 +1,8 @@
 package net.monarezio.presentation.mainMenu
 
-import javafx.scene.Parent
-import javafx.scene.control.Label
 import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.VBox
+import net.monarezio.domain.ai.RandomAi
+import net.monarezio.domain.ai.models.Ais
 import net.monarezio.presentation.game.GameView
 import tornadofx.*
 
@@ -21,5 +20,13 @@ class MainMenuView : View("Tic Tac Toe"){
 
     fun handleHumanVsHuman() {
         replaceWith(GameView::class)
+    }
+
+    fun handleHumanVsAi() {
+        val ais = Ais(null, RandomAi())
+        val scope = Scope()
+        setInScope(ais, scope)
+
+        this += find<GameView>(scope)
     }
 }

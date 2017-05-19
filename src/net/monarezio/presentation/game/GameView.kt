@@ -1,22 +1,22 @@
 package net.monarezio.presentation.game
 
-import javafx.scene.control.Label
 import javafx.scene.layout.AnchorPane
-import net.monarezio.domain.Game
-import net.monarezio.domain.models.Board
-import net.monarezio.domain.models.Field
+import net.monarezio.domain.ai.Ai
+import net.monarezio.domain.ai.models.Ais
+import net.monarezio.domain.game.models.Field
 import net.monarezio.presentation.custom.ClickListener
 import net.monarezio.presentation.custom.GameGrid
-import net.monarezio.presentation.game.win.Win
 import net.monarezio.presentation.mainMenu.MainMenuView
 import tornadofx.*
 
 /**
  * Created by monarezio on 06/05/2017.
  */
-class GameView : View(), ClickListener {
+class GameView : Fragment(), ClickListener {
     override val root: AnchorPane by fxml("/resources/fxml/game.fxml")
     val controller: GameController by inject()
+
+    val ais: Ais by inject()
 
     val gridPane: GameGrid by fxid()
 
