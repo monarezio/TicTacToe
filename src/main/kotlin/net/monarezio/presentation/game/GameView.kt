@@ -1,8 +1,6 @@
 package net.monarezio.presentation.game
 
 import javafx.scene.layout.AnchorPane
-import net.monarezio.domain.ai.Ai
-import net.monarezio.domain.ai.models.Ais
 import net.monarezio.domain.game.models.Field
 import net.monarezio.presentation.custom.ClickListener
 import net.monarezio.presentation.custom.GameGrid
@@ -12,11 +10,9 @@ import tornadofx.*
 /**
  * Created by monarezio on 06/05/2017.
  */
-class GameView : Fragment(), ClickListener {
+class GameView : View(), ClickListener {
     override val root: AnchorPane by fxml("/resources/fxml/game.fxml")
     val controller: GameController by inject()
-
-    val ais: Ais by inject()
 
     val gridPane: GameGrid by fxid()
 

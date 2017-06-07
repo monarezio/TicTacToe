@@ -31,7 +31,7 @@ class Game private constructor(private val board: Board, private val playerOnMov
 
 
         if(canPlay(x, y))
-            return createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber)
+            return createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, circle, cross)
         return this
     }
 
@@ -86,7 +86,8 @@ class Game private constructor(private val board: Board, private val playerOnMov
         /**
          * creates a new game with an empty gameboard
          */
-        fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5): TicTacToe = Game(GameBoard.createNewBoard(rows, columns), Field.CROSS, winNumber)
+        fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5, circle: Ai? = null, cross: Ai? = null): TicTacToe = Game(GameBoard.createNewBoard(rows, columns),
+                Field.CROSS, winNumber, circle, cross)
 
         /**
          * create a game with the presets

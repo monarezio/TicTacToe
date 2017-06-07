@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import net.monarezio.presentation.custom.GameGrid?>
+<?import javafx.scene.layout.StackPane?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="/resources/styles/styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GameGrid fx:id="gridPane" prefWidth="800.0"/>
+      <Button layoutX="15.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="27.0" prefWidth="200.0" text="Main Menu">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="red" />
+         </styleClass></Button>
+      <Button layoutX="670.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleReset" prefHeight="27.0" prefWidth="117.0" text="Reset">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="blue" />
+         </styleClass></Button>
+   </children>
+</AnchorPane>

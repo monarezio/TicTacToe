@@ -2,8 +2,11 @@ package net.monarezio.presentation.mainMenu
 
 import javafx.scene.layout.AnchorPane
 import net.monarezio.domain.ai.RandomAi
-import net.monarezio.domain.ai.models.Ais
+import net.monarezio.domain.ai.models.AiItems
+import net.monarezio.domain.game.models.type.GameType
+import net.monarezio.domain.game.models.type.Type
 import net.monarezio.presentation.game.GameView
+import net.monarezio.presentation.list.ListView
 import tornadofx.*
 
 /**
@@ -19,14 +22,26 @@ class MainMenuView : View("Tic Tac Toe"){
     }
 
     fun handleHumanVsHuman() {
-        replaceWith(GameView::class)
+        val aiItems = AiItems(null, null)
+        val scope = Scope()
+        setInScope(aiItems, scope)
+
+        this += find<GameView>(scope)
     }
 
     fun handleHumanVsAi() {
-        val ais = Ais(null, RandomAi())
+        val gameType = Type(GameType.AI_VS_PLAYER)
         val scope = Scope()
-        setInScope(ais, scope)
+        setInScope(gameType, scope)
 
-        this += find<GameView>(scope)
+        this += find<ListView>(scope)
+    }
+
+    fun handleAiVsAi() {
+        val gameType = Type(GameType.AI_VS_AI)
+        val scope = Scope()
+        setInScope(gameType, scope)
+
+        this += find<ListView>(scope)
     }
 }
