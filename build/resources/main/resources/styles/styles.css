@@ -44,3 +44,53 @@ AnchorPane {
 .btn.blue:hover {
     -fx-background-color: #2980b9;
 }
+
+.player_label {
+    -fx-font-size: 50px;
+    -fx-background-color: #eaeaea;
+}
+
+SplitPane *.split-pane-divider {
+    -fx-padding: 0 1 0 1;
+}
+
+#circle {
+    -fx-text-fill: #e74c3c;
+}
+
+#circle Label {
+    -fx-text-fill: #c0392b;
+    -fx-font-size: 25px;
+}
+
+#circle .list-cell:filled:selected:focused {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+#cross {
+    -fx-text-fill: #3498db;
+}
+
+#cross Label {
+    -fx-text-fill: #2980b9;
+    -fx-font-size: 25px;
+}
+
+#cross .list-cell:filled:selected:focused {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.list-cell:odd, .list-cell:even {
+    -fx-background-color: white;
+    -fx-border-width: 0.5px;
+    -fx-border-color: #e4e4e4;
+    -fx-font-size: 15px;
+}
+
+ListView, ListView:focused, SplitPane {
+    -fx-border-insets: 0px;
+    -fx-border-width: 0px;
+    -fx-background-insets: 0px;
+}
