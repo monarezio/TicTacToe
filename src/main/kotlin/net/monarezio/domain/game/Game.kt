@@ -18,7 +18,7 @@ class Game private constructor(private val board: Board, private val playerOnMov
 
     private fun canPlay(x: Int, y: Int): Boolean = isMoveAvailable(x, y) && !isGameOver()
 
-    override fun makeMove(x: Int, y: Int): TicTacToe {
+    override fun makeMove(x: Int, y: Int): TicTacToe { //TODO: Fix the beginning of the ai vs human
         if(circle is Ai && playerOnMove == Field.CIRCLE && canPlay(x, y)) {
             val newGame = createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, circle, cross)
             val coords = circle.nextCoordinates(this)
