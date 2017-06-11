@@ -13,25 +13,13 @@ import net.monarezio.domain.game.models.Field
 /**
  * Created by monarezio on 04/05/2017.
  */
-class Game private constructor(private val board: Board, private val playerOnMove: Field, private val winNumber: Int,
-                               private val circle: Ai? = null, private val cross: Ai? = null): TicTacToe {
+class Game private constructor(private val board: Board, private val playerOnMove: Field, private val winNumber: Int): TicTacToe {
 
     private fun canPlay(x: Int, y: Int): Boolean = isMoveAvailable(x, y) && !isGameOver()
 
-    override fun makeMove(x: Int, y: Int): TicTacToe { //TODO: Fix the beginning of the ai vs human
-        if(circle is Ai && playerOnMove == Field.CIRCLE && canPlay(x, y)) {
-            val newGame = createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, circle, cross)
-            val coords = circle.nextCoordinates(this)
-            return newGame.makeMove(coords.x, coords.y)
-        } else if(cross is Ai && playerOnMove == Field.CROSS && isMoveAvailable(x, y)) {
-            val newGame = createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, circle, cross)
-            val coords = cross.nextCoordinates(this)
-            return newGame.makeMove(coords.x, coords.y)
-        }
-
-
+    override fun makeMove(x: Int, y: Int): TicTacToe {
         if(canPlay(x, y))
-            return createGame(board.setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, circle, cross)
+            return createGame(getBoard().setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber)
         return this
     }
 
@@ -86,14 +74,12 @@ class Game private constructor(private val board: Board, private val playerOnMov
         /**
          * creates a new game with an empty gameboard
          */
-        fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5, circle: Ai? = null, cross: Ai? = null): TicTacToe = Game(GameBoard.createNewBoard(rows, columns),
-                Field.CROSS, winNumber, circle, cross)
+        fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5): TicTacToe = Game(GameBoard.createNewBoard(rows, columns),
+                Field.CROSS, winNumber)
 
         /**
          * create a game with the presets
          */
         fun createGame(board: Board, playerOnMove: Field, winNumber: Int) = Game(board, playerOnMove, winNumber)
-
-        fun createGame(board: Board, playerOnMove: Field, winNumber: Int, circle: Ai?, cross: Ai?) = Game(board, playerOnMove, winNumber, circle, cross)
     }
 }

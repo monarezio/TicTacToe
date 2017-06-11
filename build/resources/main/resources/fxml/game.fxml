@@ -16,6 +16,21 @@
             <String fx:value="btn" />
             <String fx:value="red" />
          </styleClass></Button>
+      <Button fx:id="forwardsButton" layoutX="465.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleForward" prefHeight="27.0" prefWidth="50.0" text="→">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="blue" />
+         </styleClass></Button>
+      <Button fx:id="playButton" layoutX="380.0" layoutY="549.0" mnemonicParsing="false" onAction="#handlePlay" prefHeight="27.0" prefWidth="75.0" text="Play">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="red" />
+         </styleClass></Button>
+      <Button fx:id="backwordsButton" layoutX="320.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleBackwords" prefHeight="27.0" prefWidth="50.0" text="←">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="blue" />
+         </styleClass></Button>
       <Button layoutX="670.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleReset" prefHeight="27.0" prefWidth="117.0" text="Reset">
          <styleClass>
             <String fx:value="btn" />
