@@ -1,5 +1,6 @@
 package net.monarezio.domain.ai
 
+import net.monarezio.domain.game.AiTicTacToe
 import net.monarezio.domain.game.TicTacToe
 import net.monarezio.domain.game.models.Coordinate
 import tornadofx.*
@@ -13,6 +14,6 @@ import tornadofx.*
  */
 interface Ai {
 
-    fun nextCoordinates(game: TicTacToe): Coordinate
+    fun nextCoordinates(game: AiTicTacToe): Coordinate
 
 }
