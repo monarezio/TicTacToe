@@ -36,3 +36,11 @@ fun<E> List<List<E>>.diagonalLeftKeys(i: Int, j: Int, amount: Int, list: List<Co
         return list
     return diagonalLeftKeys(i + 1, j - 1, amount-1, list + listOf(Coordinate(i, j)))
 }
+
+fun<E> List<List<E>>.twoDMap(f: (x: Int, y: Int) -> E): List<List<E>> {
+    return this.mapIndexed { i, list -> list.mapIndexed { j, e -> f(i, j) } }
+}
+
+fun<E> List<List<E>>.twoDForeach(f: (x: Int, y: Int) -> Unit): Unit {
+    forEachIndexed { i, list -> list.forEachIndexed { j, e -> f(i, j) } }
+}

@@ -14,6 +14,14 @@ class Minimax: Ai {
     }
 
     private fun eval(board: Board, playerOnMove: Field): Int {
-        
+        return 1
+    }
+
+    private fun adjacent(amount: Int, pos: Coordinate) {
+
+    }
+
+    private fun getAvailableMoves(board: Board) {
+        val coordinates = 0.rangeTo(board.getFields().size)
     }
 }

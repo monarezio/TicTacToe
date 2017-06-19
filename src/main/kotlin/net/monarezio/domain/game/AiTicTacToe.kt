@@ -27,4 +27,9 @@ interface AiTicTacToe {
      * returns a new game state with the modified values
      */
     fun makeMove(x: Int, y: Int): TicTacToe
+
+    /**
+     * returns true if the game is over, false if it is not
+     */
+    fun isGameOver(): Boolean
 }

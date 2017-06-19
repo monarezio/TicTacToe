@@ -13,9 +13,4 @@ interface TicTacToe : AiTicTacToe{
      * returns the winner of the game and the position of the end scene, if there is no winner Field.ANON is returned
      */
     fun getWinner(): Pair<Field, List<Coordinate>>
-
-    /**
-     * returns true if the game is over, false if it is not
-     */
-    fun isGameOver(): Boolean
 }

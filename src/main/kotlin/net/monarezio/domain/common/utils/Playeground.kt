@@ -11,17 +11,6 @@ import net.monarezio.domain.game.models.Field
 
 
 fun main(args: Array<String>) {
-    val fields = listOf(
-            listOf(Field.ANON, Field.CROSS, Field.ANON, Field.ANON),
-            listOf(Field.CIRCLE, Field.CROSS, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.CROSS, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.CROSS)
-    )
-
-
-    val x = 1
-    val y = 3
-    val diagonal = fields.diagonalLeft(x, y, 3)
-
-    print(diagonal)
+    val a = 0.rangeTo(10).map { i -> 0.rangeTo(10) }.flatMap { i -> i }
+    println(a)
 }
