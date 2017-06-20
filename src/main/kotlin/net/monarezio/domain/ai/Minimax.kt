@@ -1,5 +1,6 @@
 package net.monarezio.domain.ai
 
+import net.monarezio.domain.common.extensions.toCoordinates
 import net.monarezio.domain.game.AiTicTacToe
 import net.monarezio.domain.game.models.Board
 import net.monarezio.domain.game.models.Coordinate
@@ -21,7 +22,8 @@ class Minimax: Ai {
 
     }
 
-    private fun getAvailableMoves(board: Board) {
-        val coordinates = 0.rangeTo(board.getFields().size)
+    private fun getAvailableMoves(board: Board): List<Coordinate> {
+        val coordinates = board.getFields().toCoordinates()
+        return coordinates.filter { i -> board.getField(i.x, i.y) == Field.ANON && board.getFieldsAround(i).any { j -> j != Field.ANON }}
     }
 }

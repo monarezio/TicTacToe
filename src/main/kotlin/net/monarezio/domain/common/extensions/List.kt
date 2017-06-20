@@ -44,3 +44,5 @@ fun<E> List<List<E>>.twoDMap(f: (x: Int, y: Int) -> E): List<List<E>> {
 fun<E> List<List<E>>.twoDForeach(f: (x: Int, y: Int) -> Unit): Unit {
     forEachIndexed { i, list -> list.forEachIndexed { j, e -> f(i, j) } }
 }
+
+fun<E> List<List<E>>.toCoordinates(): List<Coordinate> = mapIndexed{ i, list -> list.mapIndexed{ j, item -> Coordinate(i, j) } }.flatMap { i -> i }
