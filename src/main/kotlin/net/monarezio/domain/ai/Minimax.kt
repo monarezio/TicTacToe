@@ -11,15 +11,30 @@ import net.monarezio.domain.game.models.Field
  */
 class Minimax: Ai {
     override fun nextCoordinates(game: AiTicTacToe): Coordinate {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val nextMoves = getAvailableMoves(game.getBoard())
+        return nextMoves.map { i -> Pair(i, game.makeMove(i.x, i.y)) }
+                .map { i -> Pair(i.first, adjacent(i.second.getBoard(), i.first)) }
+                .sortedBy { i -> i.second }
+                .first().first
     }
 
     private fun eval(board: Board, playerOnMove: Field): Int {
         return 1
     }
 
-    private fun adjacent(amount: Int, pos: Coordinate) {
+    /**
+     * DOES NOT ACTUALLY RETURN NUMBER OF ADJACENT FIELDS (black magic)
+     */
+    private fun adjacent(board: Board, pos: Coordinate, amount: Int = 1, memory: Set<Coordinate> = setOf()): Int {
+        val tmpList = board.getCoordsAround(pos)
+                .filter { i -> board.getField(pos.x, pos.y) == board.getField(i.x, i.y) && !memory.contains(i) }
 
+        if(tmpList.isEmpty())
+            return amount
+
+        return tmpList
+                .map { i -> adjacent(board, i, amount + 1, memory + pos) }
+                .sum()
     }
 
     private fun getAvailableMoves(board: Board): List<Coordinate> {

@@ -26,6 +26,16 @@ interface Board {
     fun getFieldsAround(coord: Coordinate): List<Field>
 
     /**
+     * returns list of coordinates around the point in a random order
+     */
+    fun getCoordsAround(x: Int, y: Int): List<Coordinate>
+
+    /**
+     * returns list of coordinates around the point in a random order
+     */
+    fun getCoordsAround(coord: Coordinate): List<Coordinate>
+
+    /**
      * sets the field on the position given and returns a new Board
      */
     fun setField(x: Int, y: Int, field: Field): Board

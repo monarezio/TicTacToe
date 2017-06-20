@@ -17,17 +17,24 @@ import net.monarezio.domain.game.models.Field
 fun main(args: Array<String>) {
 
     val b = GameBoard.createBoard(listOf(
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.CROSS, Field.CIRCLE, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.ANON),
+            listOf(Field.ANON, Field.CROSS, Field.CROSS, Field.CROSS),
             listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
             listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
     ))
 
-    fun getAvailableMoves(board: Board): List<Coordinate> {
-        val coordinates = board.getFields().toCoordinates()
-        return coordinates.filter { i -> board.getField(i.x, i.y) == Field.ANON && board.getFieldsAround(i).any { j -> j != Field.ANON }}
+    fun adjacent(board: Board, pos: Coordinate, amount: Int = 1, memory: Set<Coordinate> = setOf()): Int {
+        val tmpList = board.getCoordsAround(pos)
+                .filter { i -> board.getField(pos.x, pos.y) == board.getField(i.x, i.y) && !memory.contains(i) }
+
+        if(tmpList.isEmpty())
+            return amount
+
+        return tmpList
+            .map { i -> adjacent(board, i, amount + 1, memory + pos) }
+            .sum()
     }
 
-    println(getAvailableMoves(b))
+    println(adjacent(b, Coordinate(0, 0)))
 
 }
