@@ -44,7 +44,7 @@ class GameController : Controller() {
     fun makeOneMove() {
         val circle = aiItems.circle
         val cross = aiItems.cross
-        if(circle is Ai && cross is Ai) {
+        if (circle is Ai && cross is Ai) {
             val crossCoords = cross.nextCoordinates(game)
             game = game.makeMove(crossCoords.x, crossCoords.y)
             val circleCoords = circle.nextCoordinates(game)

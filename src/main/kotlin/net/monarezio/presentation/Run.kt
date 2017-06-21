@@ -17,8 +17,8 @@ class Run: App(MainMenuView::class) {
     }
 
     init {
-        Font.loadFont(Run::class.java!!.getResource("/resources/fonts/TicTacToe.ttf").toExternalForm(), 10.0)
-        Font.loadFont(Run::class.java!!.getResource("/resources/fonts/super-webcomic-bros.regular.ttf").toExternalForm(), 10.0).name
+        Font.loadFont(Run::class.java.getResource("/resources/fonts/TicTacToe.ttf").toExternalForm(), 10.0)
+        Font.loadFont(Run::class.java.getResource("/resources/fonts/super-webcomic-bros.regular.ttf").toExternalForm(), 10.0).name
     }
 
     companion object {

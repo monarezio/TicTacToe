@@ -9,8 +9,4 @@ import net.monarezio.domain.game.models.Field
  */
 interface TicTacToe : AiTicTacToe{
 
-    /**
-     * returns the winner of the game and the position of the end scene, if there is no winner Field.ANON is returned
-     */
-    fun getWinner(): Pair<Field, List<Coordinate>>
 }

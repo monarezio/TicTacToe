@@ -32,7 +32,7 @@ fun main(args: Array<String>) {
 
         return tmpList
             .map { i -> adjacent(board, i, amount + 1, memory + pos) }
-            .sum()
+            .sorted().last()
     }
 
     println(adjacent(b, Coordinate(0, 0)))
