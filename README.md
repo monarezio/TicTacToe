@@ -53,3 +53,6 @@ Write your code
       }
   }
 ```
+
+#### Step 5
+Build and run the project, in main menu choose one of the options with the Ai 🙂
