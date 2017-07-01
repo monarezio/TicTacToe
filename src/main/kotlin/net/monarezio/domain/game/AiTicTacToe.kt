@@ -38,4 +38,9 @@ interface AiTicTacToe {
      * returns the winner of the game and the position of the end scene, if there is no winner Field.ANON is returned
      */
     fun getWinner(): Pair<Field, List<Coordinate>>
+
+    /**
+     * returns last two played positions (cross, circle)
+     */
+    fun getLastCoordinates(): Pair<Coordinate, Coordinate>
 }

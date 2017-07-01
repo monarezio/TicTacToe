@@ -1,7 +1,6 @@
 package net.monarezio.domain.game
 
 import models.GameBoard
-import net.monarezio.domain.ai.Ai
 import net.monarezio.domain.common.extensions.diagonalLeft
 import net.monarezio.domain.common.extensions.diagonalLeftKeys
 import net.monarezio.domain.common.extensions.diagonalRight
@@ -13,13 +12,17 @@ import net.monarezio.domain.game.models.Field
 /**
  * Created by monarezio on 04/05/2017.
  */
-class Game private constructor(private val board: Board, private val playerOnMove: Field, private val winNumber: Int): TicTacToe {
+class Game private constructor(private val board: Board, private val playerOnMove: Field, private val winNumber: Int,
+                               private val lastCoords: Pair<Coordinate, Coordinate>
+    ): TicTacToe {
+
+    override fun getLastCoordinates(): Pair<Coordinate, Coordinate> = lastCoords
 
     private fun canPlay(x: Int, y: Int): Boolean = isMoveAvailable(x, y) && !isGameOver()
 
     override fun makeMove(x: Int, y: Int): TicTacToe {
         if(canPlay(x, y))
-            return createGame(getBoard().setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber)
+            return createGame(getBoard().setField(x, y, playerOnMove), playerOnMove.toggle(), winNumber, Pair(Coordinate(x, y), lastCoords.first))
         return this
     }
 
@@ -75,11 +78,13 @@ class Game private constructor(private val board: Board, private val playerOnMov
          * creates a new game with an empty gameboard
          */
         fun createNewGame(rows: Int , columns: Int, winNumber: Int = 5): TicTacToe = Game(GameBoard.createNewBoard(rows, columns),
-                Field.CROSS, winNumber)
+                Field.CROSS, winNumber, Pair(Coordinate(0
+                -2, -2), Coordinate(-2, -2)))
 
         /**
          * create a game with the presets
          */
-        fun createGame(board: Board, playerOnMove: Field, winNumber: Int) = Game(board, playerOnMove, winNumber)
+        fun createGame(board: Board, playerOnMove: Field, winNumber: Int, lastCoords: Pair<Coordinate, Coordinate>)
+                = Game(board, playerOnMove, winNumber, lastCoords)
     }
 }

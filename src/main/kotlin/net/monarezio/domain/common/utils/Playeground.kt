@@ -27,12 +27,19 @@ fun main(args: Array<String>) {
         val tmpList = board.getCoordsAround(pos)
                 .filter { i -> board.getField(pos.x, pos.y) == board.getField(i.x, i.y) && !memory.contains(i) }
 
+        tmpList.forEach { i ->
+            println(pos.toString() + ":" + i)
+            println(board.getField(pos.x, pos.y).toString() + ":" + board.getField(i.x, i.y))
+        }
+
         if(tmpList.isEmpty())
             return amount
 
+        println(tmpList)
+
         return tmpList
-            .map { i -> adjacent(board, i, amount + 1, memory + pos) }
-            .sorted().last()
+                .map { i -> adjacent(board, i, amount + 1, memory + pos) }
+                .sorted().last()
     }
 
     println(adjacent(b, Coordinate(0, 0)))
