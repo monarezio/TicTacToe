@@ -10,7 +10,6 @@ import net.monarezio.domain.game.models.Field
  * Created by monarezio on 19/05/2017.
  */
 class RandomAi : Ai {
-
     override fun nextCoordinates(game: AiTicTacToe): Coordinate {
         val board = game.getBoard().getFields()
         while (true) {
@@ -20,5 +19,4 @@ class RandomAi : Ai {
                 return Coordinate(x, y)
         }
     }
-
 }

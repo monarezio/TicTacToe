@@ -1,6 +1,6 @@
 package net.monarezio.domain.ai
 
-import net.monarezio.domain.common.extensions.toCoordinates
+import net.monarezio.domain.common.extensions.*
 import net.monarezio.domain.game.AiTicTacToe
 import net.monarezio.domain.game.Game
 import net.monarezio.domain.game.models.Board
@@ -19,14 +19,14 @@ class Minimax: Ai {
 
         val a = getAvailableMoves(game.getBoard(), game.getLastCoordinates())
                 .parallelStream()
-                .map { i -> Pair(minimax(game.makeMove(i.x, i.y), 3, false, game.getPlayerOnMove()), i) }
+                .map { i -> Pair(minimax(game.makeMove(i.x, i.y), 2, false, game.getPlayerOnMove()), i) }
 
         return a
                 .sorted { o1, o2 -> o2.first.compareTo(o1.first) }
                 .findFirst().get().second
     }
 
-    private fun minimax(game: AiTicTacToe, depth: Int = 4, max: Boolean, playerOnMove: Field): Int {
+    private fun minimax(game: AiTicTacToe, depth: Int = 2, max: Boolean, playerOnMove: Field): Int {
         if(depth == 0)
             return eval(game, playerOnMove)
 
@@ -40,24 +40,40 @@ class Minimax: Ai {
     }
 
     private fun eval(game: AiTicTacToe, playerOnMove: Field): Int {
-        val winner = game.getWinner().first
-        if(winner == playerOnMove)
-            return Int.MAX_VALUE
-        else if(winner == playerOnMove.toggle())
-            return Int.MIN_VALUE
-        else return 0
-    }
+        val winNumber = 5 //TODO: make it more universal
+        val board = game.getBoard()
+        val fields = board.getFields()
 
-    private fun eval(board: Board, pos: Coordinate, amount: Int = 1, memory: Set<Coordinate> = setOf()): Int {
-        val tmpList = board.getCoordsAround(pos)
-                .filter { i -> board.getField(pos.x, pos.y) == board.getField(i.x, i.y) && !memory.contains(i) }
+        var amount = 0
 
-        if(tmpList.isEmpty())
-            return amount
+        for(i in 0..board.getRows() - winNumber) {
+            for(j in 0..board.getColumns() - winNumber) {
+                val rows = i.rangeTo(i + winNumber - 1).map { index -> fields[index][j] }
+                val rowCount = rows.count { i -> i == playerOnMove }
+                if(rowCount > 0)
+                    amount = rowCount
 
-        return tmpList
-                .map { i -> eval(board, i, amount + 1, memory + pos) }
-                .sorted().last()
+
+                val columns = j.rangeTo(j + winNumber - 1).map { index -> fields[i][index] }
+                val collumnCount = columns.count { i -> i == playerOnMove }
+                if(collumnCount > amount)
+                    amount = collumnCount
+
+                val diagonalRight = fields.diagonalRight(i, j, winNumber)
+                val diagonalRightCount = diagonalRight.count { i -> i == playerOnMove }
+                if(diagonalRightCount > amount)
+                    amount = diagonalRightCount
+
+                val diagonalLeft = fields.diagonalLeft(i, j + winNumber - 1, winNumber)
+                val diagonalLeftCount = diagonalLeft.count { i -> i == playerOnMove }
+                if(diagonalLeftCount > amount)
+                    amount = diagonalLeftCount
+            }
+        }
+
+
+        println(amount)
+        return amount
     }
 
     private fun getAvailableMoves(board: Board, lastCoords: Pair<Coordinate, Coordinate>): List<Coordinate>
