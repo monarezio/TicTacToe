@@ -7,14 +7,6 @@ TicTacToe implementation in kotlin
 - [x] Ai interface
 - [ ] Working ai
 
-## Screenshots
-
-![alt text](http://www.imagehosting.cz/images/screenvrv.png)
-
-![alt text](http://www.imagehosting.cz/images/screenfmf.png)
-
-![alt text](http://www.imagehosting.cz/images/screenbnb.png)
-
 ## Writing an custom ai
 
 #### Step 1
